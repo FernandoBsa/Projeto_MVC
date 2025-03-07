@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EmprestimoLivros.Models;
+namespace EmprestimoLivros.Models.Entity;
 
 public class EmprestimosModel
 {
@@ -11,5 +11,6 @@ public class EmprestimosModel
     public string Fornecedor { get; set; }
     [Required(ErrorMessage = "Digite o nome do Livro")]
     public string Livro { get; set; }
-    public DateTime DataUltimaAtualizacao { get; set; } = DateTime.UtcNow;
+
+    public DateTime DataUltimaAtualizacao { get; set; }
 }
