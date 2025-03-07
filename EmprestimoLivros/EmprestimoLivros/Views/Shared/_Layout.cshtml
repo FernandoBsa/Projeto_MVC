@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject EmprestimoLivros.Services.Interface.ISessaoService SessaoService
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -21,12 +24,24 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-fill mx-2"></i>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-controller="Emprestimo" asp-action="Index"><i class="bi bi-journals mx-2"></i>Emprestimos</a>
-                    </li>
+                    @if (SessaoService.BuscarSessao() != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-fill mx-2"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Emprestimo" asp-action="Index"><i class="bi bi-journals mx-2"></i>Emprestimos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Logout"><i class="bi bi-box-arrow-right mx-2"></i>Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login"><i class="bi bi-box-arrow-in-right mx-2"></i>Login</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

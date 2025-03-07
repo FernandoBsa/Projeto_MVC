@@ -36,5 +36,5 @@ $(document).ready(function(){
         $(".alert").fadeOut("slow", function (){
             $(this).alert('close');
         })
-    }, 2000)
+    }, 1000)
 })

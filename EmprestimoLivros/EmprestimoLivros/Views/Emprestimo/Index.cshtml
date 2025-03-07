@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmprestimosModel>
+﻿@model IEnumerable<EmprestimoLivros.Models.Entity.EmprestimosModel>
 
 @{
     ViewData["Title"] = "Empréstimos";
@@ -7,7 +7,11 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h1>Empréstimos</h1>
-        <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-1"></i>Cadastrar Novo Empréstimo</a>
+        <div>
+            <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Exportar"><i class="bi bi-file-earmark-plus mx-1"></i>Exportar</a>
+            <a class="btn btn-success mx-2" asp-controller="Emprestimo" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-1"></i>Cadastrar Novo Empréstimo</a>    
+        </div>
+        
     </div>
     
     @if (TempData["MensagemSucesso"] != null)
@@ -17,13 +21,20 @@
         </div>
     }
     
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+    
     <table id="Emprestimos" class="table table-light table-hover mt-5">
         <thead>
         <tr>
             <th scope="col">Recebedor</th>
             <th scope="col">Fornecedor</th>
             <th scope="col">Livro</th>
-            <th scope="col">Ultima Atualização</th>
+            <th scope="col">Data Emprestimo</th>
             <th></th>
         </tr>
         </thead>
