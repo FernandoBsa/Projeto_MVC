@@ -1,4 +1,5 @@
 ﻿using EmprestimoLivros.Models;
+using EmprestimoLivros.Models.Entities;
 using EmprestimoLivros.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 
